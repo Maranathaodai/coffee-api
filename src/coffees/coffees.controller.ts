@@ -11,7 +11,8 @@ import { Controller,
             Query
      } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';     
-
+import { CreateCoffeeDto } from './dto/create-coffee.dto/create-coffee.dto';
+import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 @Controller('coffees')
 export class CoffeesController {
     constructor(private readonly CoffeesService: CoffeesService){}
@@ -26,12 +27,12 @@ export class CoffeesController {
         return this.CoffeesService.findOne(id);
     }
     @Post()
-    create(@Body() body){
-        return this.CoffeesService.create(body);
+    create(@Body() CreateCoffeeDto:CreateCoffeeDto){
+        return this.CoffeesService.create(CreateCoffeeDto);
     }
     @Patch(':id')
-    update(@Param('id')id:string, @Body() body){
-        return this.CoffeesService.update(id, body);
+    update(@Param('id')id:string, @Body() updateCoffeeDto:UpdateCoffeeDto){
+        return this.CoffeesService.update(id,updateCoffeeDto) ;
     }
     @Delete(':id')
     remove(@Param('id')id:string){
