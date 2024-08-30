@@ -17,7 +17,6 @@ export class CoffeesService {
         return this.coffees;
     }
     findOne(id:string){
-        throw 'a random error';
         const coffee = this.coffees.find(item => item.id === +id);
         if (!coffee){
             throw new NotFoundException(`Coffee #${id} not found`);
