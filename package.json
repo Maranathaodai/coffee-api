@@ -8,6 +8,7 @@
   "scripts": {
     "build:docker": "docker build -t coffe-api .",
     "build": "nest build",
+     "migration:run": "npm run build && npx typeorm migration:run -d dist/config/data-source.js",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
